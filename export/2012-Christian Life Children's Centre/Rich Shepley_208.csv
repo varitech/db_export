@@ -1,0 +1,19 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Rich Shepley,Opening Balance,0.0
+Invocie Number,Date,Amount,Alora Shepley,Misc.
+69,"Apr 19,2012",144.0,0.0,144.0
+151,"Apr 20,2012",209.0,209.0,0.0
+410,"Jun 01,2012",190.0,190.0,0.0
+581,"Jun 05,2012",104.5,0.0,104.5
+580,"Jun 05,2012",-190.0,-190.0,0.0
+585,"Jun 05,2012",0.0,0.0,0.0
+584,"Jun 05,2012",-104.5,0.0,-104.5
+Total Invoiced,"",353.0,209.0
+---
+rec Number,Date,Amount
+22,"Apr 30,2012",144.0,457932
+367,"Jun 08,2012",209.0,1840
+Total Receipt,353.0
+Closing Balance,0.0
+""

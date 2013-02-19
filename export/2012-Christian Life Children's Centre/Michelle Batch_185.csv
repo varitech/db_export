@@ -1,0 +1,16 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Michelle Batch,Opening Balance,0.0
+Invocie Number,Date,Amount,Brooklyn Batch,Misc.
+277,"Apr 20,2012",160.0,160.0,0.0
+536,"Jun 01,2012",128.0,128.0,0.0
+Total Invoiced,"",288.0,288.0
+---
+rec Number,Date,Amount
+128,"May 01,2012",-1610.0,Reversing receipt 93 replace by receipt 129
+129,"May 01,2012",160.0,6-EFT
+93,"May 01,2012",1610.0,6 - EFT
+244,"Jun 01,2012",128.0,EFT
+Total Receipt,288.0
+Closing Balance,0.0
+""

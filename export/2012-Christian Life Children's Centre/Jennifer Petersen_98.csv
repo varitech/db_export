@@ -1,0 +1,26 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Jennifer Petersen,Opening Balance,0.0
+Invocie Number,Date,Amount,Marcus Petersen,Misc.
+168,"Apr 20,2012",506.0,506.0,0.0
+427,"Jun 01,2012",460.0,460.0,0.0
+669,"Jul 01,2012",325.75,320.0,5.75
+892,"Aug 01,2012",416.0,416.0,0.0
+1058,"Sep 01,2012",475.0,475.0,0.0
+1325,"Oct 01,2012",557.0,557.0,0.0
+1537,"Nov 24,2012",532.0,532.0,0.0
+1767,"Dec 01,2012",439.0,439.0,0.0
+Total Invoiced,"",3710.75,3705.0
+---
+rec Number,Date,Amount
+61,"Apr 30,2012",506.0,122
+323,"Jun 04,2012",460.0,123
+490,"Jul 03,2012",325.0,EFT
+629,"Aug 01,2012",416.75,EFT
+812,"Sep 03,2012",475.0,EFT
+1013,"Oct 01,2012",557.0,EFT
+1222,"Nov 01,2012",532.0,
+1418,"Dec 03,2012",439.0,
+Total Receipt,3710.75
+Closing Balance,0.0
+""

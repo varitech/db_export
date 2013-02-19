@@ -1,0 +1,22 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Lisa Carter,Opening Balance,0.0
+Invocie Number,Date,Amount,Tea Carter,Misc.
+1159,"Sep 01,2012",151.0,126.0,25.0
+1424,"Oct 01,2012",168.0,168.0,0.0
+1640,"Nov 24,2012",189.0,189.0,0.0
+1869,"Dec 01,2012",126.0,126.0,0.0
+Total Invoiced,"",634.0,609.0
+---
+rec Number,Date,Amount
+731,"Sep 03,2012",75.5,EFT
+877,"Sep 17,2012",75.5,EFT #22
+935,"Oct 01,2012",84.0,EFT
+1080,"Oct 15,2012",84.0,EFT
+1143,"Nov 01,2012",94.5,
+1271,"Nov 15,2012",94.5,
+1338,"Dec 03,2012",63.0,
+1470,"Dec 17,2012",63.0,
+Total Receipt,634.0
+Closing Balance,0.0
+""

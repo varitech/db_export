@@ -1,0 +1,21 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Annalisa Cook,Opening Balance,0.0
+Invocie Number,Date,Amount,Charlie Cook,Misc.
+256,"Apr 20,2012",296.33,296.33,0.0
+515,"Jun 01,2012",244.33,244.33,0.0
+737,"Jul 01,2012",79.75,71.5,8.25
+958,"Aug 01,2012",-49.5,-49.5,0.0
+1189,"Aug 27,2012",-475.0,-475.0,0.0
+1190,"Aug 27,2012",140.0,140.0,0.0
+1150,"Sep 01,2012",475.0,475.0,0.0
+Total Invoiced,"",710.91,702.66
+---
+rec Number,Date,Amount
+34,"Apr 30,2012",296.33,17
+301,"Jun 01,2012",232.33,019
+443,"Jul 03,2012",91.0,EFT
+738,"Sep 03,2012",91.25,EFT
+Total Receipt,710.91
+Closing Balance,0.0
+""

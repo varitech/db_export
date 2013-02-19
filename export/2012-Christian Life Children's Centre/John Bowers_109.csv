@@ -1,0 +1,27 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,John Bowers,Opening Balance,0.0
+Invocie Number,Date,Amount,Landon Bowers,Misc.
+526,"Jun 01,2012",128.0,128.0,0.0
+796,"Jul 03,2012",34.0,0.0,34.0
+819,"Jul 12,2012",32.0,30.0,2.0
+966,"Aug 01,2012",34.0,0.0,34.0
+1011,"Aug 20,2012",128.0,0.0,128.0
+1166,"Sep 01,2012",112.0,112.0,0.0
+1264,"Sep 14,2012",48.0,0.0,48.0
+1435,"Oct 01,2012",208.0,208.0,0.0
+1651,"Nov 24,2012",234.0,204.0,30.0
+1880,"Dec 01,2012",172.0,172.0,0.0
+Total Invoiced,"",1130.0,854.0
+---
+rec Number,Date,Amount
+246,"Jun 01,2012",128.0,EFT
+437,"Jul 03,2012",34.0,EFT
+581,"Aug 01,2012",66.0,EFT
+725,"Sep 03,2012",240.0,EFT
+926,"Oct 01,2012",256.0,EFT
+1134,"Nov 01,2012",234.0,
+1329,"Dec 03,2012",172.0,
+Total Receipt,1130.0
+Closing Balance,0.0
+""

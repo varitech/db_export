@@ -1,0 +1,21 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Trina Gault,Opening Balance,0.0
+Invocie Number,Date,Amount,Hallie Gault,Jadyn Gault,Misc.
+22,"Apr 18,2012",-20.0,0.0,0.0,-20.0
+239,"Apr 20,2012",240.0,0.0,240.0,0.0
+495,"Jun 01,2012",328.0,0.0,200.0,128.0
+781,"Jul 01,2012",25.0,0.0,0.0,25.0
+718,"Jul 01,2012",386.5,175.5,204.0,7.0
+797,"Jul 03,2012",40.0,0.0,0.0,40.0
+939,"Aug 01,2012",366.3,172.5,193.8,0.0
+Total Invoiced,"",1365.8,348.0,837.8
+---
+rec Number,Date,Amount
+40,"Apr 30,2012",240.0,104
+259,"Jun 01,2012",308.0,EFT
+453,"Jul 03,2012",411.0,EFT
+596,"Aug 01,2012",406.8,EFT
+Total Receipt,1365.8
+Closing Balance,0.0
+""

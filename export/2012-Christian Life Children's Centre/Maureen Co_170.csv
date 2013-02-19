@@ -1,0 +1,20 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Maureen Co,Opening Balance,0.0
+Invocie Number,Date,Amount,Krisca Co,Misc.
+1015,"Aug 23,2012",25.0,0.0,25.0
+1221,"Sep 07,2012",214.0,189.0,25.0
+1416,"Oct 01,2012",273.0,273.0,0.0
+1632,"Nov 24,2012",231.0,252.0,-21.0
+1861,"Dec 01,2012",189.0,189.0,0.0
+Total Invoiced,"",932.0,903.0
+---
+rec Number,Date,Amount
+691,"Aug 21,2012",25.0,22789
+855,"Sep 06,2012",189.0,1945
+1056,"Oct 01,2012",298.0,1978
+1289,"Nov 15,2012",231.0,2057
+1468,"Dec 14,2012",189.0,22817
+Total Receipt,932.0
+Closing Balance,0.0
+""

@@ -1,0 +1,19 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Bridget Tremblay,Opening Balance,0.0
+Invocie Number,Date,Amount,Sarah Tremblay,Sarah Tremblay B,Misc.
+94,"Apr 19,2012",120.0,0.0,0.0,120.0
+138,"Apr 20,2012",80.0,80.0,80.0,0.0
+397,"Jun 01,2012",64.0,64.0,64.0,0.0
+875,"Aug 01,2012",-16.0,0.0,0.0,-16.0
+Total Invoiced,"",248.0,144.0,144.0
+---
+rec Number,Date,Amount
+10,"Apr 25,2012",104.0,117
+341,"Jun 04,2012",80.0,122
+416,"Jun 28,2012",64.0,125
+1236,"Nov 01,2012",144.0,
+1258,"Nov 07,2012",-144.0,incorrect posting
+Total Receipt,248.0
+Closing Balance,0.0
+""

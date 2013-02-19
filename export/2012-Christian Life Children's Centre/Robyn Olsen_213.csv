@@ -1,0 +1,22 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Robyn Olsen,Opening Balance,0.0
+Invocie Number,Date,Amount,Adelyn Olsen,Axtyn Olsen,Misc.
+612,"Jun 06,2012",25.0,0.0,0.0,25.0
+1065,"Sep 01,2012",126.0,126.0,0.0,0.0
+1332,"Oct 01,2012",189.0,189.0,0.0,0.0
+1706,"Nov 02,2012",-189.0,-189.0,0.0,0.0
+1707,"Nov 02,2012",168.0,168.0,0.0,0.0
+1545,"Nov 24,2012",189.0,189.0,0.0,0.0
+1775,"Dec 01,2012",126.0,126.0,0.0,0.0
+Total Invoiced,"",634.0,609.0,0.0
+---
+rec Number,Date,Amount
+369,"Jun 06,2012",25.0,1836
+805,"Sep 03,2012",126.0,EFT
+1006,"Oct 01,2012",189.0,EFT
+1216,"Nov 01,2012",189.0,
+1412,"Dec 03,2012",105.0,
+Total Receipt,634.0
+Closing Balance,0.0
+""

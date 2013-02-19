@@ -1,0 +1,22 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Jennifer Boulet,Opening Balance,0.0
+Invocie Number,Date,Amount,Raegan Boulet,Mia Boulet,Ella Boulet,Misc.
+12,"Apr 18,2012",-62.0,0.0,0.0,0.0,-62.0
+267,"Apr 20,2012",320.0,320.0,0.0,0.0,0.0
+1168,"Sep 01,2012",969.0,0.0,484.5,484.5,0.0
+1438,"Oct 01,2012",1162.8,0.0,581.4,581.4,0.0
+1654,"Nov 24,2012",1033.6,0.0,516.8,516.8,0.0
+1883,"Dec 01,2012",775.2,0.0,387.6,387.6,0.0
+1955,"Dec 20,2012",12.0,0.0,0.0,0.0,12.0
+Total Invoiced,"",4210.6,320.0,1970.3,1970.3
+---
+rec Number,Date,Amount
+31,"Apr 30,2012",320.0,695
+723,"Sep 03,2012",907.0,EFT
+924,"Oct 01,2012",1162.8,EFT
+1132,"Nov 01,2012",1033.6,
+1327,"Dec 03,2012",775.2,
+Total Receipt,4198.6
+Closing Balance,12.0
+""

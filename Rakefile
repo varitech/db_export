@@ -8,14 +8,14 @@ Dir.glob("#{File.dirname(__FILE__)}/lib/**/*.rb").each do |f|
 end
 
 desc 'Export fee break down by facility and year'
-task :export, :facility_name, :year, :output_filename do |t, args|
+task :export, :facility_name, :year, :output_folder do |t, args|
   connection = setup_connection
            
   ActiveRecord::Base.establish_connection(connection)
   exporter = Childcarepro::DbExport::TaxReceipt::Exporter.new(args[:facility_name], args[:year].to_i)
-  output_filename = args[:output_filename] 
-  @terminal.say @terminal.color("Exporting data ...", :green)
-  Childcarepro::DbExport::TaxReceipt::CSVwriter.new.write("./#{output_filename}.csv",exporter.export)
+  output_folder = args[:output_folder] || "./export" 
+  @terminal.say @terminal.color("Exporting data to folder #{output_folder}...", :green)
+  Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder).write(exporter.export)
 end
 
 def setup_connection

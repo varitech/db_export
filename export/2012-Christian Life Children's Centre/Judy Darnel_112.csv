@@ -1,0 +1,18 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Judy Darnel,Opening Balance,0.0
+Invocie Number,Date,Amount,Coulton Darnel,Misc.
+254,"Apr 20,2012",177.0,177.0,0.0
+512,"Jun 01,2012",145.0,145.0,0.0
+606,"Jun 06,2012",0.0,0.0,0.0
+605,"Jun 06,2012",-145.0,-145.0,0.0
+Total Invoiced,"",177.0,177.0
+---
+rec Number,Date,Amount
+139,"May 01,2012",177.0,1755
+358,"Jun 06,2012",160.0,092
+364,"Jun 06,2012",-160.0,Reversing receipt 358 replace by receipt 365
+365,"Jun 06,2012",0.0,Payment Received
+Total Receipt,177.0
+Closing Balance,0.0
+""

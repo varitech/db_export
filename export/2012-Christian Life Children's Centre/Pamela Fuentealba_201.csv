@@ -1,0 +1,18 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Pamela Fuentealba,Opening Balance,0.0
+Invocie Number,Date,Amount,Reina Mennie,Valeria Hernandez,Daniela Hernandez,Misc.
+112,"Apr 19,2012",60.0,0.0,0.0,0.0,60.0
+721,"Jul 01,2012",571.9,0.0,334.4,228.0,9.5
+812,"Jul 03,2012",-161.06,0.0,0.0,0.0,-161.06
+942,"Aug 01,2012",572.4,0.0,334.4,228.0,10.0
+1017,"Aug 23,2012",411.24,0.0,253.77,147.47,10.0
+1016,"Aug 23,2012",-572.4,0.0,-334.4,-228.0,-10.0
+Total Invoiced,"",882.08,0.0,588.17,375.47
+---
+rec Number,Date,Amount
+450,"Jul 03,2012",631.0,EFT
+593,"Aug 01,2012",251.18,EFT
+Total Receipt,882.18
+Closing Balance,-0.1
+""

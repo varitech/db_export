@@ -1,0 +1,18 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Dominique Caron,Opening Balance,0.0
+Invocie Number,Date,Amount,Kingston Stoudt,Misc.
+1268,"Sep 14,2012",109.0,84.0,25.0
+1425,"Oct 01,2012",189.0,189.0,0.0
+1641,"Nov 24,2012",168.0,189.0,-21.0
+1870,"Dec 01,2012",126.0,126.0,0.0
+Total Invoiced,"",592.0,588.0
+---
+rec Number,Date,Amount
+873,"Sep 17,2012",109.0,EFT #22
+934,"Oct 01,2012",189.0,EFT
+1142,"Nov 01,2012",168.0,
+1337,"Dec 03,2012",126.0,
+Total Receipt,592.0
+Closing Balance,0.0
+""

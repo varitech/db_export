@@ -1,0 +1,18 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Jami Drake,Opening Balance,0.0
+Invocie Number,Date,Amount,Easton Drake,Misc.
+1142,"Sep 01,2012",90.0,90.0,0.0
+1407,"Oct 01,2012",120.0,120.0,0.0
+1623,"Nov 24,2012",135.0,135.0,0.0
+1852,"Dec 01,2012",90.0,90.0,0.0
+Total Invoiced,"",435.0,435.0
+---
+rec Number,Date,Amount
+743,"Sep 03,2012",90.0,EFT
+946,"Oct 01,2012",120.0,EFT
+1154,"Nov 01,2012",135.0,
+1349,"Dec 03,2012",90.0,
+Total Receipt,435.0
+Closing Balance,0.0
+""

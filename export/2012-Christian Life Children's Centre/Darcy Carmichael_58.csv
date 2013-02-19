@@ -1,0 +1,26 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Darcy Carmichael,Opening Balance,0.0
+Invocie Number,Date,Amount,Nolan Carmichael-Barnes,Isabella Carmichael-Barnes,Misc.
+743,"Jul 01,2012",710.5,638.4,64.6,7.5
+801,"Jul 03,2012",-710.5,-638.4,-64.6,-7.5
+802,"Jul 03,2012",132.9,60.8,64.6,7.5
+963,"Aug 01,2012",820.1,395.2,419.9,5.0
+1160,"Sep 01,2012",1064.95,451.25,613.7,0.0
+1426,"Oct 01,2012",1246.4,535.8,710.6,0.0
+1642,"Nov 24,2012",844.55,166.25,678.3,0.0
+1871,"Dec 01,2012",734.35,185.25,549.1,0.0
+1956,"Dec 20,2012",68.0,0.0,0.0,68.0
+1968,"Dec 20,2012",20.0,0.0,0.0,20.0
+Total Invoiced,"",4931.25,1794.55,3036.2
+---
+rec Number,Date,Amount
+439,"Jul 03,2012",132.9,EFT
+582,"Aug 01,2012",820.1,EFT
+730,"Sep 03,2012",1064.95,EFT
+933,"Oct 01,2012",1246.4,EFT
+1141,"Nov 01,2012",844.55,
+1336,"Dec 03,2012",734.35,
+Total Receipt,4843.25
+Closing Balance,88.0
+""

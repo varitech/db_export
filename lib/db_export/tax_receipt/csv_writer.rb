@@ -3,11 +3,20 @@ require 'csv'
 module Childcarepro::DbExport
   module TaxReceipt
       class CSVwriter
-
-      	def write (path, data)
-      		CSV.open(path, "wb") do |csv|
-      		  data.tax_receipts.each do |receipt|
-      		    csv << [""]
+        def initialize(output_folder)
+           @output_folder= output_folder
+           Dir.mkdir(@output_folder) unless File.exists?(@output_folder)
+    
+        end
+        
+      	def write (data)
+      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name}")
+      	  Dir.mkdir(facility_folder) unless File.exists?(facility_folder)
+      	  
+    		  data.tax_receipts.each_with_index do |receipt,idx|
+    		    output_name = File.join(facility_folder, "#{idx}_#{receipt.contact_name}.csv")
+    		    CSV.open(output_name, "wb") do |csv|
+    		      csv << [""]
       		    csv << [data.facility_name,data.year]
       		    csv << ["Contact Name",receipt.contact_name, "Opening Balance", receipt.outstanding_amount]
               write_invoice_charges(csv, receipt.invoice_charges.detail)
@@ -20,8 +29,8 @@ module Childcarepro::DbExport
     			    csv << ["Total Receipt", receipt.payments.sum(&:AMOUNT).round(2)]
     			    csv <<["Closing Balance" ,receipt.closing_balance]
     			    csv << [""]
-    		    end
-      		end
+  			    end
+  		    end
       	end
   	
       	def write_invoice_charges(csv, invoice_charges)

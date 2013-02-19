@@ -1,0 +1,22 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Starla Schmidt,Opening Balance,0.0
+Invocie Number,Date,Amount,Jayme Schmidt,Jayme Schmidt,Misc.
+66,"Apr 19,2012",89.94,0.0,0.0,89.94
+156,"Apr 20,2012",90.0,90.0,90.0,0.0
+415,"Jun 01,2012",10.0,50.0,50.0,-40.0
+615,"Jun 12,2012",30.0,0.0,0.0,30.0
+660,"Jul 01,2012",70.0,66.0,66.0,4.0
+765,"Jul 01,2012",-30.0,0.0,0.0,-30.0
+887,"Aug 01,2012",66.0,66.0,66.0,0.0
+Total Invoiced,"",325.94,272.0,272.0
+---
+rec Number,Date,Amount
+6,"Apr 20,2012",90.0,22731
+152,"May 07,2012",50.0,12
+345,"Jun 04,2012",80.0,22763
+549,"Jul 26,2012",39.94,original deposit #44
+557,"Jul 30,2012",66.0,22782
+Total Receipt,325.94
+Closing Balance,0.0
+""

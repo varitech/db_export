@@ -1,0 +1,28 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Alicia Williamson,Opening Balance,0.0
+Invocie Number,Date,Amount,Jordyn Williamson,Blair Williamson,Misc.
+82,"Apr 19,2012",261.5,0.0,0.0,261.5
+128,"Apr 20,2012",320.0,320.0,0.0,0.0
+386,"Jun 01,2012",256.0,256.0,0.0,0.0
+1029,"Sep 01,2012",428.0,408.0,0.0,20.0
+1222,"Sep 10,2012",102.0,0.0,0.0,102.0
+1291,"Oct 01,2012",578.0,578.0,0.0,0.0
+1504,"Nov 24,2012",578.0,578.0,0.0,0.0
+1733,"Dec 01,2012",476.0,476.0,0.0,0.0
+Total Invoiced,"",2999.5,2616.0,0.0
+---
+rec Number,Date,Amount
+644,"Aug 01,2012",418.75,EFT
+674,"Aug 15,2012",418.75,EFT
+680,"Aug 20,2012",-418.75,"EFT Aug 1, 2012"
+832,"Sep 03,2012",423.37,EFT
+875,"Sep 17,2012",250.0,EFT #22
+1034,"Oct 01,2012",335.0,EFT
+1091,"Oct 15,2012",335.0,EFT
+1290,"Nov 20,2012",335.0,
+1441,"Dec 03,2012",278.0,
+1484,"Dec 17,2012",578.0,
+Total Receipt,2953.12
+Closing Balance,46.38
+""

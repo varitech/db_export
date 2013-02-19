@@ -1,0 +1,18 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Tia Stephens,Opening Balance,0.0
+Invocie Number,Date,Amount,Lukas Guderjahn,Sarah Bryant,Misc.
+113,"Apr 19,2012",-14.0,0.0,0.0,-14.0
+147,"Apr 20,2012",288.0,288.0,0.0,0.0
+405,"Jun 01,2012",378.0,294.0,0.0,84.0
+586,"Jun 05,2012",-378.0,-294.0,0.0,-84.0
+587,"Jun 05,2012",217.0,128.0,0.0,89.0
+Total Invoiced,"",491.0,416.0,0.0
+---
+rec Number,Date,Amount
+42,"Apr 30,2012",288.0,464
+306,"Jun 04,2012",256.0,465
+401,"Jun 20,2012",-53.0,9685
+Total Receipt,491.0
+Closing Balance,0.0
+""

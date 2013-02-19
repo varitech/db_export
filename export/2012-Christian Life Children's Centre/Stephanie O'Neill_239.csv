@@ -1,0 +1,24 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Stephanie O'Neill,Opening Balance,0.0
+Invocie Number,Date,Amount,Austin O'Neill,Misc.
+614,"Jun 11,2012",25.0,0.0,25.0
+673,"Jul 01,2012",924.0,924.0,0.0
+896,"Aug 01,2012",-488.0,-488.0,0.0
+1066,"Sep 01,2012",232.75,232.75,0.0
+1333,"Oct 01,2012",333.0,333.0,0.0
+1546,"Nov 24,2012",289.0,289.0,0.0
+1776,"Dec 01,2012",208.25,208.25,0.0
+Total Invoiced,"",1524.0,1499.0
+---
+rec Number,Date,Amount
+373,"Jun 11,2012",25.0,22769
+486,"Jul 03,2012",290.0,EFT
+625,"Aug 01,2012",146.0,EFT
+806,"Sep 03,2012",232.75,EFT
+1007,"Oct 01,2012",333.0,EFT
+1217,"Nov 01,2012",289.0,
+1413,"Dec 03,2012",208.25,
+Total Receipt,1524.0
+Closing Balance,0.0
+""

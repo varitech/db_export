@@ -1,0 +1,20 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Jessica Fleming,Opening Balance,0.0
+Invocie Number,Date,Amount,Isaac Fleming,Misc.
+785,"Jun 29,2012",25.0,0.0,25.0
+1133,"Sep 01,2012",126.0,126.0,0.0
+1398,"Oct 01,2012",168.0,168.0,0.0
+1614,"Nov 24,2012",189.0,189.0,0.0
+1844,"Dec 01,2012",126.0,126.0,0.0
+Total Invoiced,"",634.0,609.0
+---
+rec Number,Date,Amount
+413,"Jun 26,2012",25.0,1867
+749,"Sep 03,2012",126.0,EFT
+952,"Oct 01,2012",168.0,EFT
+1160,"Nov 01,2012",189.0,
+1355,"Dec 03,2012",126.0,
+Total Receipt,634.0
+Closing Balance,0.0
+""

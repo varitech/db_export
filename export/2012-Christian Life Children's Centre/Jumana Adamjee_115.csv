@@ -1,0 +1,20 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Jumana Adamjee,Opening Balance,0.0
+Invocie Number,Date,Amount,Maya Dorosz,Misc.
+1279,"Sep 21,2012",85.0,60.0,25.0
+1453,"Oct 01,2012",135.0,135.0,0.0
+1667,"Nov 24,2012",120.0,135.0,-15.0
+1897,"Dec 01,2012",90.0,90.0,0.0
+Total Invoiced,"",430.0,420.0
+---
+rec Number,Date,Amount
+895,"Sep 21,2012",85.0,1962
+1064,"Oct 03,2012",67.5,1989
+1105,"Oct 17,2012",67.5,2007
+1119,"Oct 31,2012",60.0,2029
+1286,"Nov 14,2012",30.0,2047
+1311,"Nov 28,2012",90.0,2076
+Total Receipt,400.0
+Closing Balance,30.0
+""

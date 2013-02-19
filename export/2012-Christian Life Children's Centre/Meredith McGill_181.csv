@@ -1,0 +1,25 @@
+""
+Christian Life Children's Centre,2012
+Contact Name,Meredith McGill,Opening Balance,0.0
+Invocie Number,Date,Amount,Nayland McGill,Lachelan Youngson,Misc.
+629,"Jun 18,2012",214.0,210.0,0.0,4.0
+906,"Aug 01,2012",182.0,150.0,0.0,32.0
+1073,"Sep 01,2012",399.0,399.0,0.0,0.0
+1341,"Oct 01,2012",469.0,469.0,0.0,0.0
+1554,"Nov 24,2012",441.0,441.0,0.0,0.0
+1784,"Dec 01,2012",315.0,315.0,0.0,0.0
+Total Invoiced,"",2020.0,1984.0,0.0
+---
+rec Number,Date,Amount
+397,"Jun 18,2012",484.0,22772
+797,"Sep 03,2012",155.5,EFT
+888,"Sep 17,2012",155.5,EFT #22
+997,"Oct 01,2012",234.5,EFT
+1088,"Oct 15,2012",234.5,EFT
+1208,"Nov 01,2012",220.5,
+1280,"Nov 15,2012",220.5,
+1403,"Dec 03,2012",157.5,
+1478,"Dec 17,2012",157.5,
+Total Receipt,2020.0
+Closing Balance,0.0
+""
