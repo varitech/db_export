@@ -3,8 +3,8 @@ require 'spec_helper'
 module Childcarepro::DbExport::TaxReceipt
   describe "Exporter" do
 
-    let(:target_year) {2012}
-    # let(:facilities) { 3.times {|i| FactoryGirl.create(:facility,:BILLINGPERIODTYPE=> 2, :FACILITYNAME=> "facility#{i}") } }
+    let(:year) {2012}
+    let(:facility) { FactoryGirl.create(:facility,:BILLINGPERIODTYPE=> 2) }
 
     # let(:valid_type) {[1, 75]}
     # let(:invalid_type) {[10, 20, 25, 30, 35, 50, 555, 777, 888, 999]}
@@ -18,9 +18,14 @@ module Childcarepro::DbExport::TaxReceipt
     # subject { Exporter.new(facilities.sample, target_year, console) }
     
     describe '.initialize' do
+      context "when created" do
+        subject { Exporter.new(facility.FACILITYNAME, year).facility }
+        its(:FACILITYNAME) { should match facility.FACILITYNAME }
+      end
+      
       context "when initialized with a facility name not existing" do
         it "should raise an ArgumentError exception" do
-              expect { Exporter.new("invalidname", target_year) }.to raise_error(ArgumentError)
+              expect { Exporter.new("invalidname", year) }.to raise_error(ArgumentError)
         end
       end
       
@@ -36,7 +41,7 @@ module Childcarepro::DbExport::TaxReceipt
         
         it "prompt a list of facitlity names to choose from" do
           console.should_receive(:choose).with("facility0","facility1","facility2")
-          Exporter.new("facility", target_year, console)
+          Exporter.new("facility", year, console)
         end
       end
     end

@@ -3,6 +3,7 @@ require 'highline'
 module Childcarepro::DbExport
   module TaxReceipt
       class Exporter
+        attr_reader :facility
         def initialize(facility_name, year, console=HighLine.new)
           @console = console
           @year = year
