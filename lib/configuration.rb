@@ -1,3 +1,5 @@
+require 'environment'
+
 Childcarepro.configure do |config|
   
   config.add_env :default do |e|

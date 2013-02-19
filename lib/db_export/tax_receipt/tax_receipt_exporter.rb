@@ -26,7 +26,7 @@ module Childcarepro::DbExport
         private 
     
         def generate_tax_receipt(contact)
-           # puts contact.full_name
+           @console.say contact.full_name
            OpenStruct.new(
             :contact_name=> contact.full_name,
             :outstanding_amount=>  ContactHelper.outstanding_amount(contact,@year),
