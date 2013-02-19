@@ -26,19 +26,19 @@ module Childcarepro::DbExport
         private 
     
         def generate_tax_receipt(contact)
-           puts contact.full_name
+           # puts contact.full_name
            OpenStruct.new(
             :contact_name=> contact.full_name,
-            :outstanding_amount=>  Childcarepro::DbModel::ContactHelper.outstanding_amount(contact,@year),
-            :invoice_charges=> Childcarepro::DbModel::ContactHelper.invoice_charges(contact, @year) ,
-            :payments=> Childcarepro::DbModel::ContactHelper.receivables_from_year(contact, @year),
-            :closing_balance=>Childcarepro::DbModel::ContactHelper.outstanding_amount(contact,@year+1).round(2))
+            :outstanding_amount=>  ContactHelper.outstanding_amount(contact,@year),
+            :invoice_charges=> ContactHelper.invoice_charges(contact, @year) ,
+            :payments=> ContactHelper.receivables_from_year(contact, @year),
+            :closing_balance=> ContactHelper.outstanding_amount(contact,@year+1).round(2))
         end
     
         def choose_faclility(facility_name)
             facilities = Facility.where("FACILITYNAME like ?", "%#{facility_name}%")
             raise ArgumentError, "Facility #{facility_name} not found" if facilities.empty?
-            puts "choose from #{facilities.size}"
+
             if facilities.size > 1
               @console.say @console.color("There are #{facilities.size} facilities that name cotain '#{facility_name}', please choose one from the list" , :red)
               choice = @console.choose(*facilities.map(&:FACILITYNAME).sort)

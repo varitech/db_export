@@ -46,6 +46,14 @@ module Childcarepro::DbExport::TaxReceipt
       end
     end
     
+    describe '.export' do
+      subject { Exporter.new(facility.FACILITYNAME, year).export}
+      
+      its(:facility_name) { should match facility.FACILITYNAME }
+      
+      its(:year) { should be year}
+    end
+    
     
       # context "targeted year" do
       #        context "when a default contact makes payments" do
