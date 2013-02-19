@@ -36,15 +36,16 @@ module Childcarepro::DbExport
     
         def choose_faclility(facility_name)
             facilities = Facility.where("FACILITYNAME like ?", "%#{facility_name}%")
-            raise "Facility #{facility_name} not found" if facilities.empty?
-
+            raise ArgumentError, "Facility #{facility_name} not found" if facilities.empty?
+            puts "choose from #{facilities.size}"
             if facilities.size > 1
               @console.say @console.color("There are #{facilities.size} facilities that name cotain '#{facility_name}', please choose one from the list" , :red)
-              choice = @console.choose(*facilities.map(&:FACILITYNAME))
+              choice = @console.choose(*facilities.map(&:FACILITYNAME).sort)
             end 
 
             facilities.find{|f| f.FACILITYNAME==choice}|| facilities.first
         end
+        
       end
     end
 end
