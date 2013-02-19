@@ -9,7 +9,7 @@ module Childcarepro::DbExport::TaxReceipt
         let(:child)            { current_facility.children.first }
         let(:billing_period)   { BillingPeriod.select {|b| b.BILLINGPERIOD.year < target_year }.sample }
 
-        describe "#outstanding_amount" do
+        describe ".outstanding_amount" do
         	context "When the invoice is for a single child" do
         	  before do
         		  FactoryGirl.create_list(:invoice_with_charges_to_child, 1, 

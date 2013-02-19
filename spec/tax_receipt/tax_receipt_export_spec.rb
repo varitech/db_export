@@ -5,10 +5,17 @@ module Childcarepro::DbExport::TaxReceipt
 
     let(:year) {2012}
     let(:facility) { FactoryGirl.create(:facility,:BILLINGPERIODTYPE=> 2) }
-
+    let!(:console) { mock("HighLine") }
+    
+    before do
+      console.stub!(:color)
+      console.stub!(:say)
+      console.stub!(:choose)
+    end
+    
     describe '.initialize' do
       context "when created" do
-        subject { Exporter.new(facility.FACILITYNAME, year).facility }
+        subject { Exporter.new(facility.FACILITYNAME, year, console).facility }
         its(:FACILITYNAME) { should match facility.FACILITYNAME }
       end
       
@@ -18,13 +25,8 @@ module Childcarepro::DbExport::TaxReceipt
         end
       end
       
-      context "when initialized with a searching name results more than one facility" do
-        let!(:console) { mock("HighLine") }
-        
+      context "when initialized with a searching name results more than one facility" do        
         before do
-          console.stub!(:color)
-          console.stub!(:say)
-          console.stub!(:choose)
           3.times {|i| FactoryGirl.create(:facility,:BILLINGPERIODTYPE=> 2, :FACILITYNAME=> "facility#{i}") }
         end
         
@@ -36,7 +38,7 @@ module Childcarepro::DbExport::TaxReceipt
     end
     
     describe '.export' do
-      subject { Exporter.new(facility.FACILITYNAME, year).export}
+      subject { Exporter.new(facility.FACILITYNAME, year, console).export}
       
       its(:facility_name) { should match facility.FACILITYNAME }
       
