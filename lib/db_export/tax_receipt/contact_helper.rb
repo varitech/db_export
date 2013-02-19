@@ -8,7 +8,7 @@ module Childcarepro::DbExport
         end
   
         def self.outstanding_amount(contact, year)
-          charges = invoices_from_year(contact, year).sum(&:total).round(2)
+          charges = invoices_from_year(contact, year).sum(&:total)
       
           receivables = contact.invoices
             .map(&:receivables)
@@ -16,9 +16,8 @@ module Childcarepro::DbExport
             .select { |r| r.DATE.year < year }
             .uniq
             .sum(&:AMOUNT)
-            .round(2)
-      
-          charges - receivables
+
+          (charges - receivables).round(2)
         end
   
         def self.invoices_from_year(contact, year)

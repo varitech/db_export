@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-module TaxReceiptExportspec
-  describe Childcarepro::DbExport::TaxReceipt::Exporter do
+module Childcarepro::DbExport::TaxReceipt
+  describe Exporter do
     include SeedDataHelper
 
     let(:target_year) {2012}
