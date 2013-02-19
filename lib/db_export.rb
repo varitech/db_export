@@ -1,5 +1,8 @@
-require "db_export/version"
-
-module DbExport
-  # Your code goes here...
+Dir.glob("#{File.dirname(__FILE__)}/db_export/**/*.rb").each do |f| 
+  require f 
 end
+
+module Childcarepro::DbExport
+
+end
+
