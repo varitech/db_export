@@ -22,7 +22,7 @@ Childcarepro.configure do |config|
     e.instance :childcarepro1
     e.instance :childcarepro2
     e.instance :childcarepro3
-    e.instance(:childcareproCI) { |db| db.database = 'childcarepro_ci' }
+    # e.instance(:childcareproCI) { |db| db.database = 'childcarepro_ci' }
   end
   
   config.add_env :staging_52 do |e|
@@ -35,7 +35,7 @@ Childcarepro.configure do |config|
     e.instance :childcarepro1 
     e.instance :childcarepro2
     e.instance :childcarepro3 
-    e.instance(:childcareproCI) { |db| db.database = 'childcarepro_ci' }
+    # e.instance(:childcareproCI) { |db| db.database = 'childcarepro_ci' }
   end
 
   config.add_env :local_xp do |e|
