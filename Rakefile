@@ -15,7 +15,9 @@ task :export, :facility_name, :year, :output_folder do |t, args|
   exporter = Childcarepro::DbExport::TaxReceipt::Exporter.new(args[:facility_name], args[:year].to_i)
   output_folder = args[:output_folder] || "./export" 
   @terminal.say @terminal.color("Exporting data to folder #{output_folder}...", :green)
-  Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder).write(exporter.export)
+  receipts= exporter.export
+  Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder).write(receipts)
+  Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder).write(receipts)
 end
 
 def setup_connection

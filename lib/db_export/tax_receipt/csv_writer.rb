@@ -1,23 +1,15 @@
 require 'csv'
+require_relative 'writer'
 
 module Childcarepro::DbExport
   module TaxReceipt
-      class CSVwriter
-        def initialize(output_folder)
-           @output_folder= output_folder
-           Dir.mkdir(@output_folder) unless File.exists?(@output_folder)
-    
-        end
+      class CSVwriter 
+        include Writer
         
-      	def write (data)
-      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name}")
-      	  Dir.mkdir(facility_folder) unless File.exists?(facility_folder)
-      	  
-    		  data.tax_receipts.each_with_index do |receipt,idx|
-    		    output_name = File.join(facility_folder, "#{idx}_#{receipt.contact_name}.csv")
+      	def write_receipt (facility_name, year,receipt, idx, output_name)
     		    CSV.open(output_name, "wb") do |csv|
     		      csv << [""]
-      		    csv << [data.facility_name,data.year]
+      		    csv << [facility_name,year]
       		    csv << ["Contact Name",receipt.contact_name, "Opening Balance", receipt.outstanding_amount]
               write_invoice_charges(csv, receipt.invoice_charges.detail)
     			    csv << ["Total Invoiced","",receipt.invoice_charges.invoice_total,receipt.invoice_charges.child_total].flatten
@@ -30,7 +22,6 @@ module Childcarepro::DbExport
     			    csv <<["Closing Balance" ,receipt.closing_balance]
     			    csv << [""]
   			    end
-  		    end
       	end
   	
       	def write_invoice_charges(csv, invoice_charges)

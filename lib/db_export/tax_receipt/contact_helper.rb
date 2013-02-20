@@ -16,7 +16,7 @@ module Childcarepro::DbExport
             .select { |r| r.DATE.year < year }
             .uniq
             .sum(&:AMOUNT)
-
+      
           (charges - receivables).round(2)
         end
   
