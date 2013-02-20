@@ -13,13 +13,12 @@ module Childcarepro::DbExport
         end
 
         def export
-          raise "empty facility" if @facility.contacts.nil?
           OpenStruct.new(
             :facility_name => @facility.FACILITYNAME,
             :year => @year,
             :tax_receipts => @facility
                       .contacts
-                      .sort_by { |c| [c.FIRSTNAME,c.LASTNAME] }
+                      .sort_by { |c| [c.FIRSTNAME||'',c.LASTNAME||''] }
                       .map     { |contact| generate_tax_receipt(contact) }
                       .reject  { |receipt| receipt.invoice_charges.empty? }
                       .reject  { |receipt| receipt.outstanding_amount==0 && receipt.payments.sum(&:AMOUNT) ==0 && receipt.invoice_charges.detail.map(&:children_charges).flatten.empty?})

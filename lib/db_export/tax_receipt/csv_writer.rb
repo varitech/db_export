@@ -18,7 +18,7 @@ module Childcarepro::DbExport
     			    receipt.payments.each do |payment| 
     			      csv << [payment.RECEIVABLENUMBER, payment.DATE.strftime('%b %d,%Y'), payment.AMOUNT,payment.PAYMENTDESCRIPTION]
     			    end
-    			    csv << ["Total Receipt", receipt.payments.sum(&:AMOUNT).round(2)]
+    			    csv << ["Total Receipt","", receipt.payments.sum(&:AMOUNT).round(2)]
     			    csv <<["Closing Balance" ,receipt.closing_balance]
     			    csv << [""]
   			    end
