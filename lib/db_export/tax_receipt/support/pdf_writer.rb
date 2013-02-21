@@ -17,8 +17,13 @@ module Childcarepro::DbExport
                             p do
                               span  "Contact Name:"
                               em receipt.contact_name
-                              span  "Opening Balance:"
-                              em  "$%.2f" % receipt.outstanding_amount
+                              
+                              
+                              span class: ['float-right'] do
+                                  span "Opening Balance:"
+                                  em "$%.2f" % receipt.outstanding_amount
+                              end
+                              
                             end
                           end 
                           

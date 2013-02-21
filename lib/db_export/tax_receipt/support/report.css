@@ -35,23 +35,41 @@ table {
 }
 
 th, td {
-   margin: 3px;
+   margin: 5px 3px;
+   text-align: right;
 }
 
-th {
+/*th {
 	  text-align: left;
 }
 
 td {
 	  text-align: right;
-}
+}*/
 tr {
 	border-bottom: 1px solid gray;
 }
+
+th:first-child , td:first-child {
+  text-align: left;
+}
+
+th:nth-child(2) , td:nth-child(2) {
+  text-align: left;
+}
+
+tr:last-child td {
+	font-weight: bold;
+}
+
 
 tr:nth-child(odd)    { background-color:#eee; }
 
 .float-right {
 	float: right;
 	margin-right:10px;
+}
+
+.small {
+		font-size: 12px;
 }

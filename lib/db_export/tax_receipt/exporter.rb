@@ -9,13 +9,14 @@ module Childcarepro::DbExport
           @console = console
           @year = year
           @facility =choose_faclility(options)
-          @console.say @console.color("Exporting tax receipts for '#{@facility.FACILITYNAME}', #{year}" , :green)
+          
         end
 
         def export
+          @console.say @console.color("Exporting tax receipts for '#{@facility.FACILITYNAME}', #{@year}" , :green)
           OpenStruct.new(
             :facility_name => @facility.FACILITYNAME,
-            :email=>@facility.CONTACTEMAIL
+            :email=>@facility.CONTACTEMAIL,
             :year => @year,
             :tax_receipts => @facility
                       .contacts
