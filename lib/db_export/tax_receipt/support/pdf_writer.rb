@@ -33,7 +33,7 @@ module Childcarepro::DbExport
                           div do
                             p do
                               span "Closing Balance:"
-                              span  "$%.2f" % receipt.closing_balance
+                              em  " $%.2f" % receipt.closing_balance
                             end
                           end
                         end
@@ -48,7 +48,7 @@ module Childcarepro::DbExport
         def charges_table(invoice_charges)
           table do
                 tr do
-                    ["Invocie#","Date", "Amount"].each { |h| th h }
+                    ["Invocie #","Date", "Amount"].each { |h| th h }
                     invoice_charges.detail.first.children_charges.map(&:child_name).each { |h| th h }  unless invoice_charges.detail.empty? 
                     th "Misc."
                 end
@@ -56,15 +56,16 @@ module Childcarepro::DbExport
                 invoice_charges.detail.map do |invoice_charge| 
                       tr do
                           td invoice_charge.invoice_number
-                          td invoice_charge.invoice_date.strftime('%b %d')
+                          td invoice_charge.invoice_date.strftime('%m/%d/%Y')
                           td "%.2f" % invoice_charge.invoice_amount
                           invoice_charge.children_charges.map(&:amount).each {|a| td "%.2f" % a } 
                           td invoice_charge.misc_charges
                       end
                 end
-                footer =["Total","", "%.2f" % invoice_charges.invoice_total, "%.2f" %invoice_charges.child_total,""].flatten
+                footer =["Total Invoiced","", " %.2f" % invoice_charges.invoice_total]
                 tr do
                      footer.each { |h| td h }
+                     invoice_charges.child_total.each {|t| td " %.2f" % t}
                 end
           end
         end
@@ -72,11 +73,11 @@ module Childcarepro::DbExport
         def receivables_table(receipt)
           table do
               tr do
-                  ["Rec#","Date", "Amount", "Comment"] .each { |h| th h }
+                  ["Rec #","Date", "Amount", "Comment"] .each { |h| th h }
               end
              receipt.payments.map do |payment| 
                 tr do
-                   [payment.RECEIVABLENUMBER, payment.DATE.strftime('%b %d,%Y'), "%.2f" % payment.AMOUNT,payment.PAYMENTDESCRIPTION]
+                   [payment.RECEIVABLENUMBER, payment.DATE.strftime('%m/%d/%Y'), "%.2f" % payment.AMOUNT,payment.PAYMENTDESCRIPTION]
                    .each {|d| td d }
                 end
              end
