@@ -49,7 +49,7 @@ module Childcarepro::DbExport
         def charges_table(invoice_charges)
           table do
                 header = ["Invocie#","Date", "Amount"]
-                header << invoice_charges.detail.first.children_charges.map(&:child_name) << "Misc." unless invoice_charges.detail.empty? 
+                header + invoice_charges.detail.first.children_charges.map(&:child_name) + ["Misc."] unless invoice_charges.detail.empty? 
                 tr do
                     header.each { |h| th h }
                 end
