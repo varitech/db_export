@@ -17,7 +17,7 @@ task :export, :facility_name, :year, :output_folder do |t, args|
   receipts= exporter.export
   facility_folder = writers(args[:output_folder]).map { |w| w.write(receipts) }.last
   
-  Childcarepro::DbExport::ReceiptMailer.sendReceipts('', facility_folder)
+  Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder)
 end
 
 desc 'Export tax receipts for all facilities'

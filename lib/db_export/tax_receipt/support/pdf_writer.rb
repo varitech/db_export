@@ -29,12 +29,13 @@ module Childcarepro::DbExport
                           div do
                             receivables_table(receipt)
                           end
-                          
-                          div do
-                            p do
+                          p class: ['float-right'] do
                               span "Closing Balance:"
                               em  " $%.2f" % receipt.closing_balance
-                            end
+                          end
+                          
+                          p class: ['small'] do 
+                            span "(Generated at #{Time.now.strftime('%e %b %Y %H:%m:%S%p')})"
                           end
                         end
                     end
@@ -59,7 +60,7 @@ module Childcarepro::DbExport
                           td invoice_charge.invoice_date.strftime('%m/%d/%Y')
                           td "%.2f" % invoice_charge.invoice_amount
                           invoice_charge.children_charges.map(&:amount).each {|a| td "%.2f" % a } 
-                          td invoice_charge.misc_charges
+                          td " %.2f" % invoice_charge.misc_charges
                       end
                 end
                 footer =["Total Invoiced","", " %.2f" % invoice_charges.invoice_total]

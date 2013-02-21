@@ -15,6 +15,7 @@ module Childcarepro::DbExport
         def export
           OpenStruct.new(
             :facility_name => @facility.FACILITYNAME,
+            :email=>@facility.CONTACTEMAIL
             :year => @year,
             :tax_receipts => @facility
                       .contacts

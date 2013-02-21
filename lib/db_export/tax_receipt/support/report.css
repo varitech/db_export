@@ -31,7 +31,6 @@ em {
 table {
   width: 100%;
   margin-bottom: 20px;
-  text-align: left;
   border-collapse:collapse;
 }
 
@@ -39,8 +38,20 @@ th, td {
    margin: 3px;
 }
 
+th {
+	  text-align: left;
+}
+
+td {
+	  text-align: right;
+}
 tr {
 	border-bottom: 1px solid gray;
 }
 
 tr:nth-child(odd)    { background-color:#eee; }
+
+.float-right {
+	float: right;
+	margin-right:10px;
+}
