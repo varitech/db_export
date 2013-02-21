@@ -19,13 +19,13 @@ module Childcarepro::DbExport
           Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
 
               Dir.glob(file_path+'/*').each do |filename| 
-                 zipfile.add(filename,filename) unless filename=~/archieve/
+                 zipfile.add(File.basename(filename),filename) unless filename=~/archieve/
               end
           end
             mail = Mail.new do
               from    'support@childcarepro.ca'
-              to      'gchen@childcarepro.ca'
-              cc       'dserceau@childcarepro.ca'
+              to      'support@childcarepro.ca'
+              cc       'dserceau@childcarepro.ca, mdegagne@childcarepro.ca, gchen@childcarepro.ca'
               subject 'Tax receipts: fees $ payments break down'
               body    "Need text here!"
             end

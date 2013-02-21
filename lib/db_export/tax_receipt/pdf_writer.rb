@@ -44,7 +44,7 @@ module Childcarepro::DbExport
               lines = receipt.payments.map do |payment| 
                          [payment.RECEIVABLENUMBER, payment.DATE.strftime('%b %d,%Y'), payment.AMOUNT,payment.PAYMENTDESCRIPTION]
                       end || []
-              footer =["Total Receipt", "",receipt.payments.sum(&:AMOUNT).round(2),"",""]
+              footer =["Total Receipt", "",receipt.payments.sum(&:AMOUNT).round(2),""]
               [header] + lines +[footer]
       	end
   

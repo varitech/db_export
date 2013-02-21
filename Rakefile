@@ -2,22 +2,42 @@ require "bundler/gem_tasks"
 require 'highline'
 require 'active_record'
 require 'ccp_dbmodel'
+require 'mail'
 
 Dir.glob("#{File.dirname(__FILE__)}/lib/**/*.rb").each do |f| 
   require_relative f
 end
 
-desc 'Export fee break down by facility and year'
+desc 'Export tax receipts facility and year'
 task :export, :facility_name, :year, :output_folder do |t, args|
-  connection = setup_connection
-           
+  connection = setup_connection         
   ActiveRecord::Base.establish_connection(connection)
-  exporter = Childcarepro::DbExport::TaxReceipt::Exporter.new(args[:facility_name], args[:year].to_i)
-  output_folder = args[:output_folder] || "./export" 
+  output_folder = args[:output_folder] || "./export"
+  writers = [ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(args[:output_folder] || "./export" ),
+              Childcarepro::DbExport::TaxReceipt::PdfWriter.new(args[:output_folder] || "./export" )]
+              
+  exporter = Childcarepro::DbExport::TaxReceipt::Exporter.new(args[:year].to_i, @terminal, {facility_name: args[:facility_name]})
+
   @terminal.say @terminal.color("Exporting data to folder #{output_folder}...", :green)
   receipts= exporter.export
-  Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder).write(receipts)
-  Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder).write(receipts)
+  facility_folder = writers.map {|writer| writer.write(receipts)}.last
+  
+  Childcarepro::DbExport::ReceiptMailer.sendReceipts('', facility_folder)
+end
+
+desc 'Export tax receipts for all facilities'
+task :export_all,:year, :env,:output_folder do |t, args|
+  writers = [ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(args[:output_folder] || "export" ),
+              Childcarepro::DbExport::TaxReceipt::PdfWriter.new(args[:output_folder] || "export" )]
+              
+  Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
+    Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new).each { |e|
+      receipts= e.export
+      facility_folder = writers.map {|writer| writer.write(receipts)}.last
+      Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder)
+    }
+
+  end
 end
 
 def setup_connection
