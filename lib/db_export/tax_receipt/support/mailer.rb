@@ -30,7 +30,7 @@ module Childcarepro::DbExport
               body    "Need text here!"
             end
             mail.add_file zipfile_name
-            # mail.deliver!
+            mail.deliver!
         end
       end
 end

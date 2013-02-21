@@ -12,7 +12,7 @@ module Childcarepro::DbExport
       	  Dir.mkdir(facility_folder) unless File.exists?(facility_folder)
       	  
     		  data.tax_receipts.each_with_index do |receipt,idx|
-    		    output_name = File.join(facility_folder, "#{idx}_#{receipt.contact_name.gsub("/","-")}")
+    		    output_name = File.join(facility_folder, "#{idx}_#{receipt.contact_name.gsub(/[\/'`~!,\(\)]/,"-")}")
             write_receipt(data.facility_name, data.year, receipt, idx, output_name)
   		    end
   		    
