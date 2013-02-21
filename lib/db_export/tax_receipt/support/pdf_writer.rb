@@ -9,17 +9,16 @@ module Childcarepro::DbExport
         include Crafty::HTML::Basic
         
       	def write_receipt (facility_name, year,receipt, idx, output_name)
-          # kit = PDFKit.new("<h1>Oh Hai!</h1>")
           content = html do
                         body do
                           h2 facility_name
                           h3 "#{year} fees & payments"
                           div do
                             p do
-                              span "Contact Name:"
-                              span  receipt.contact_name
+                              span  "Contact Name:"
+                              em receipt.contact_name
                               span  "Opening Balance:"
-                              span  receipt.outstanding_amount.to_s
+                              em  "$%.2f" % receipt.outstanding_amount
                             end
                           end 
                           
@@ -34,36 +33,36 @@ module Childcarepro::DbExport
                           div do
                             p do
                               span "Closing Balance:"
-                              span  receipt.closing_balance
+                              span  "$%.2f" % receipt.closing_balance
                             end
                           end
                         end
                     end
-                    
-  
+       
           kit = PDFKit.new content
+          kit.stylesheets << './lib/db_export/tax_receipt/support/report.css'
           kit.to_pdf
           kit.to_file("#{output_name}.pdf")
       	end
 
         def charges_table(invoice_charges)
           table do
-                header = ["Invocie#","Date", "Amount"]
-                header + invoice_charges.detail.first.children_charges.map(&:child_name) + ["Misc."] unless invoice_charges.detail.empty? 
                 tr do
-                    header.each { |h| th h }
+                    ["Invocie#","Date", "Amount"].each { |h| th h }
+                    invoice_charges.detail.first.children_charges.map(&:child_name).each { |h| th h }  unless invoice_charges.detail.empty? 
+                    th "Misc."
                 end
                 
                 invoice_charges.detail.map do |invoice_charge| 
                       tr do
                           td invoice_charge.invoice_number
-                          td invoice_charge.invoice_date.strftime('%b %d,%Y')
-                          td invoice_charge.invoice_amount
-                          invoice_charge.children_charges.map(&:amount).each {|a| td a } 
+                          td invoice_charge.invoice_date.strftime('%b %d')
+                          td "%.2f" % invoice_charge.invoice_amount
+                          invoice_charge.children_charges.map(&:amount).each {|a| td "%.2f" % a } 
                           td invoice_charge.misc_charges
                       end
                 end
-                footer =["Total","",invoice_charges.invoice_total,invoice_charges.child_total,""].flatten
+                footer =["Total","", "%.2f" % invoice_charges.invoice_total, "%.2f" %invoice_charges.child_total,""].flatten
                 tr do
                      footer.each { |h| td h }
                 end
@@ -77,13 +76,13 @@ module Childcarepro::DbExport
               end
              receipt.payments.map do |payment| 
                 tr do
-                   [payment.RECEIVABLENUMBER, payment.DATE.strftime('%b %d,%Y'), payment.AMOUNT,payment.PAYMENTDESCRIPTION]
+                   [payment.RECEIVABLENUMBER, payment.DATE.strftime('%b %d,%Y'), "%.2f" % payment.AMOUNT,payment.PAYMENTDESCRIPTION]
                    .each {|d| td d }
                 end
              end
 
              tr do
-                  ["Total Receipt", "",receipt.payments.sum(&:AMOUNT).round(2),""].each { |h| td h }
+                  ["Total Receipt", "", "%.2f" % receipt.payments.sum(&:AMOUNT),""].each { |h| td h }
              end
           end
         end
