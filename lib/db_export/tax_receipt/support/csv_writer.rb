@@ -7,10 +7,10 @@ module Childcarepro::DbExport
         include Writer
 
       	def write (data)
-      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name}")
+      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name.gsub(/[\/'`~!,\(\)]/,"-")}")
       	  Dir.mkdir(facility_folder) unless File.exists?(facility_folder)
       	  
-      	  output_name = File.join(facility_folder, "#{data.facility_name.gsub("/","-")}.csv")
+      	  output_name = File.join(facility_folder, "#{data.facility_name.gsub(/[\/'`~!,\(\)]/,"-")}.csv")
       		CSV.open(output_name, "wb") do |csv|
       		  data.tax_receipts.each do |receipt|
       		    csv << [""]

@@ -8,7 +8,7 @@ module Childcarepro::DbExport
         end
         
       	def write (data)
-      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name}")
+      	  facility_folder = File.join(@output_folder, "#{data.year}-#{data.facility_name.gsub(/[\/'`~!,\(\)]/,"-")}")
       	  Dir.mkdir(facility_folder) unless File.exists?(facility_folder)
       	  
     		  data.tax_receipts.each_with_index do |receipt,idx|
