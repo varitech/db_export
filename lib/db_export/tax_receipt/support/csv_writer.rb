@@ -17,7 +17,7 @@ module Childcarepro::DbExport
       		    csv << [data.facility_name,data.year]
       		    csv << ["Contact Name",receipt.contact_name, "Opening Balance", "%.2f" % receipt.outstanding_amount]
               write_invoice_charges(csv, receipt.invoice_charges.detail)
-    			    csv << ["Total Invoiced","","%.2f" % receipt.invoice_charges.invoice_total, "%.2f" % receipt.invoice_charges.child_total].flatten
+    			    csv << ["Total Invoiced","",("%.2f" % receipt.invoice_charges.invoice_total), receipt.invoice_charges.child_total.map {|t| "%.2f" % t}].flatten
     			    csv <<['---']
     			    csv << ["Rec Number","Date", "Amount"]
     			    receipt.payments.each do |payment| 

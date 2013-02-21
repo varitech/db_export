@@ -32,19 +32,19 @@ module Childcarepro::DbExport
                        :invoice_date=>invoice.DATE,
                        :children_charges=> contact.children.map  do |child| 
                                     OpenStruct.new(:child_name=>child.full_name, 
-                                                   :amount=> invoice.charges.select { |charge|  charge_to_child?(charge, child, year)}.sum(&:AMOUNT).round(2))
+                                                   :amount=> invoice.charges.select { |charge|  charge_to_child?(charge, child, year)}.sum(&:AMOUNT))
                                                 end,
-                       :misc_charges=> invoice.charges.select { |charge| misc_charge?(contact, charge, year)  }.sum(&:AMOUNT).round(2)
+                       :misc_charges=> invoice.charges.select { |charge| misc_charge?(contact, charge, year)  }.sum(&:AMOUNT)
                     )
                                           
            end
      
            invoice_charge_subtotals = contact.children.map  do |child| 
-                           contact.invoices.map(&:charges).flatten.select {|charge| charge_to_child?(charge, child, year)}.sum(&:AMOUNT).round(2)
+                           contact.invoices.map(&:charges).flatten.select {|charge| charge_to_child?(charge, child, year)}.sum(&:AMOUNT) 
                      
            end
      
-           OpenStruct.new(:detail=>invoice_charge_details, :invoice_total=> invoice_charge_details.sum(&:invoice_amount).round(2),:child_total=>invoice_charge_subtotals)
+           OpenStruct.new(:detail=>invoice_charge_details, :invoice_total=> invoice_charge_details.sum(&:invoice_amount),:child_total=>invoice_charge_subtotals) 
      
         end
   
