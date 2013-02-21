@@ -12,31 +12,22 @@ desc 'Export tax receipts facility and year'
 task :export, :facility_name, :year, :output_folder do |t, args|
   connection = setup_connection         
   ActiveRecord::Base.establish_connection(connection)
-  output_folder = args[:output_folder] || "./export"
-  writers = [ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(args[:output_folder] || "./export" ),
-              Childcarepro::DbExport::TaxReceipt::PdfWriter.new(args[:output_folder] || "./export" )]
-              
+  
   exporter = Childcarepro::DbExport::TaxReceipt::Exporter.new(args[:year].to_i, @terminal, {facility_name: args[:facility_name]})
-
-  @terminal.say @terminal.color("Exporting data to folder #{output_folder}...", :green)
   receipts= exporter.export
-  facility_folder = writers.map {|writer| writer.write(receipts)}.last
+  facility_folder = writers(args[:output_folder]).map { |w| w.write(receipts) }.last
   
   Childcarepro::DbExport::ReceiptMailer.sendReceipts('', facility_folder)
 end
 
 desc 'Export tax receipts for all facilities'
 task :export_all,:year, :env,:output_folder do |t, args|
-  writers = [ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(args[:output_folder] || "export" ),
-              Childcarepro::DbExport::TaxReceipt::PdfWriter.new(args[:output_folder] || "export" )]
-              
-  Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
-    Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new).each { |e|
-      receipts= e.export
-      facility_folder = writers.map {|writer| writer.write(receipts)}.last
-      Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder)
-    }
 
+  Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
+      Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new).each { |e|
+          receipts= e.export
+          facility_folder = writers(args[:output_folder]).map { |w| w.write(receipts) }.last
+          Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) }
   end
 end
 
@@ -56,4 +47,9 @@ def setup_connection
   
   @terminal.say @terminal.color("Connecting to #{env} - #{instance}", :green)
   config.environments[env].instance(instance)
+end
+
+def writers(output_folder)
+  [ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder||'./export'),
+    Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder||'./export')]
 end

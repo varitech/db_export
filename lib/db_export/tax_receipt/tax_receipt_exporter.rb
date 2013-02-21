@@ -9,7 +9,7 @@ module Childcarepro::DbExport
           @console = console
           @year = year
           @facility =choose_faclility(options)
-          @console.say @console.color("Tax Receipts for '#{@facility.FACILITYNAME}', #{year}" , :green)
+          @console.say @console.color("Exporting tax receipts for '#{@facility.FACILITYNAME}', #{year}" , :green)
         end
 
         def export

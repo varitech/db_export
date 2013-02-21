@@ -1,5 +1,8 @@
 *.gem
 *.rbc
+*.csv
+*.zip
+*.pdf
 .bundle
 .config
 .yardoc

@@ -24,8 +24,8 @@ module Childcarepro::DbExport
           end
             mail = Mail.new do
               from    'support@childcarepro.ca'
-              to      'support@childcarepro.ca'
-              cc       'dserceau@childcarepro.ca, mdegagne@childcarepro.ca, gchen@childcarepro.ca'
+              to      'gchen@childcarepro.ca'
+              # cc       'dserceau@childcarepro.ca, mdegagne@childcarepro.ca, gchen@childcarepro.ca'
               subject 'Tax receipts: fees $ payments break down'
               body    "Need text here!"
             end
