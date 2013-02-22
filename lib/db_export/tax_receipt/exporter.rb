@@ -28,9 +28,9 @@ module Childcarepro::DbExport
         
         def self.each_exporter(year,console)
           idx =0
-          Facility.where("status='Active'").foreach do |f|
+          Facility.where("status='Active'").each do |f|
              exporter = Exporter.new(year,console, { facility_id: f.id })
-             yield exporter, idx++
+             yield exporter, idx+=1
              exporter = nil
           end
         end
