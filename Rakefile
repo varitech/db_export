@@ -8,6 +8,8 @@ Dir.glob("#{File.dirname(__FILE__)}/lib/**/*.rb").each do |f|
   require_relative f
 end
 
+@logger = Logger.new('logfile.log')
+
 desc 'Export tax receipts facility and year'
 task :export, :facility_name, :year, :output_folder do |t, args|
   connection = setup_connection         
@@ -18,9 +20,13 @@ task :export, :facility_name, :year, :output_folder do |t, args|
 end
 
 desc 'Export tax receipts for all facilities'
-task :export_all,:year, :env,:output_folder do |t, args|
+task :all,:year, :env,:output_folder do |t, args|
   Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
-      Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new).each { |e|
+      @logger.info("Task started.")
+      @logger.info("params: #{args.year}, #{args.env}, #{args.output_folder}:")
+      exporters =Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new)
+      exporters=exporters.slice(ENV["FROM"]..(ENV["TO"]||1000)) if ENV["FROM"]
+      exporters.each { |e|
           run_export(e, args[:output_folder])
           e=nil
       }
@@ -48,9 +54,19 @@ end
 def run_export(exporter, output_folder)
   writers =[ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder||'./export'),
     Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder||'./export')]
-  receipts= exporter.export
-  
-  facility_folder = writers.map { |w| w.write(receipts) }.last
-  Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) unless ENV["DONT_EMAIL"]=~/true/i
-  receipts = nil
+  @logger.info("start exporting #{exporter.facility.FACILITYNAME}")
+  begin
+      receipts= exporter.export
+      @logger.info("writing files to #{output_folder}")
+      facility_folder = writers.map { |w| w.write(receipts) }.last
+      if !ENV["DONT_EMAIL"]=~/true/i then
+          @logger.info("sending email to #{ENV["EMAIL_TO"] ||receipts.email}") 
+          Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) 
+      end
+      
+      receipts = nil
+  rescue => e
+    @logger.error e.message
+    @logger.error e.backtrace
+  end
 end
