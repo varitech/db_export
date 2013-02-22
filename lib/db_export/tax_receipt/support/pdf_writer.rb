@@ -47,8 +47,9 @@ module Childcarepro::DbExport
        
           kit = PDFKit.new content
           kit.stylesheets << './lib/db_export/tax_receipt/support/report.css'
-          kit.to_pdf
-          kit.to_file("#{output_name}.pdf")
+          f = kit.to_file("#{output_name}.pdf")
+          puts "Created file #{output_name}.pdf" if ENV["DEBUG"]
+          f.close
       	end
 
         def charges_table(invoice_charges)

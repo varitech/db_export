@@ -29,6 +29,7 @@ module Childcarepro::DbExport
     		    end
       		end
   		    
+  		    puts "Created csv file in #{facility_folder}"  if ENV["DEBUG"]
   		    facility_folder
       	end
   

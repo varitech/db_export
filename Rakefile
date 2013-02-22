@@ -22,6 +22,7 @@ task :export_all,:year, :env,:output_folder do |t, args|
   Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
       Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new).each { |e|
           run_export(e, args[:output_folder])
+          e=nil
       }
   end
 end
@@ -44,11 +45,12 @@ def setup_connection
   config.environments[env].instance(instance)
 end
 
-def run_export(exporter, output_folder, send_mail=true)
+def run_export(exporter, output_folder)
   writers =[ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder||'./export'),
     Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder||'./export')]
   receipts= exporter.export
   
   facility_folder = writers.map { |w| w.write(receipts) }.last
-  Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) if send_mail
+  Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) unless ENV["DONT_EMAIL"]=~/true/i
+  receipts = nil
 end

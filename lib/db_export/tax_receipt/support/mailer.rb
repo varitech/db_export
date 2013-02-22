@@ -24,13 +24,16 @@ module Childcarepro::DbExport
           end
             mail = Mail.new do
               from    'support@childcarepro.ca'
-              to      to_address
+              to       ENV["EMAIL_TO"]||to_address
               cc      'support@childcarepro.ca'
               subject 'Tax receipts: fees $ payments break down'
               body    "Need text here!"
             end
+
             mail.add_file zipfile_name
             mail.deliver!
+            
+            puts "Email sent to #{mail.to}" if ENV["DEBUG"]
         end
       end
 end
