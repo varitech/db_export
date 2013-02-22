@@ -23,13 +23,21 @@ desc 'Export tax receipts for all facilities'
 task :all,:year, :env,:output_folder do |t, args|
   Childcarepro::DbExport::DatabaseEnumerator.new(Childcarepro.configuration.environments[args[:env].to_sym].instances).each_instance do
       @logger.info("Task started.")
-      @logger.info("params: #{args.year}, #{args.env}, #{args.output_folder}:")
-      exporters =Childcarepro::DbExport::TaxReceipt::Exporter.exporters(args[:year].to_i, HighLine.new)
-      exporters=exporters.slice(ENV["FROM"]..(ENV["TO"]||1000)) if ENV["FROM"]
-      exporters.each { |e|
-          run_export(e, args[:output_folder])
-          e=nil
-      }
+      @logger.info("params: #{args.year}, #{args.env}, #{args.output_folder},ENV['DEBUG']=#{ENV['DEBUG']} ENV[EMAIL_TO]=#{ENV['EMAIL_TO']} ENV['DONT_EMAIL']=#{ENV['DEBUG']}")
+      @logger.info("env: ENV['DEBUG']=#{ENV['DEBUG']} ENV['EMAIL_TO']=#{ENV['EMAIL_TO']} ENV['DONT_EMAIL']=#{ENV['DONT_EMAIL']} ENV['FROM']=#{ENV['FROM']} ENV['TO']=#{ENV['TO']}")
+      
+      Childcarepro::DbExport::TaxReceipt::Exporter.each_exporter(args[:year].to_i, HighLine.new) do |exporter, idx|
+            @logger.info("start exporting #{exporter.facility.FACILITYNAME}")
+            begin
+              if idx.between?((ENV["FROM"]||0),(ENV["TO"]||1000)) then
+                 @logger.info("start exporting #{idx}-#{exporter.facility.FACILITYNAME}")
+                 run_export(exporter, args[:output_folder]) 
+              end
+            rescue => e
+              @logger.error e.message
+              @logger.error e.backtrace
+            end
+      end
   end
 end
 
@@ -54,19 +62,12 @@ end
 def run_export(exporter, output_folder)
   writers =[ Childcarepro::DbExport::TaxReceipt::CSVwriter.new(output_folder||'./export'),
     Childcarepro::DbExport::TaxReceipt::PdfWriter.new(output_folder||'./export')]
-  @logger.info("start exporting #{exporter.facility.FACILITYNAME}")
-  begin
+
       receipts= exporter.export
       @logger.info("writing files to #{output_folder}")
       facility_folder = writers.map { |w| w.write(receipts) }.last
-      if !ENV["DONT_EMAIL"]=~/true/i then
-          @logger.info("sending email to #{ENV["EMAIL_TO"] ||receipts.email}") 
-          Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) 
-      end
-      
-      receipts = nil
-  rescue => e
-    @logger.error e.message
-    @logger.error e.backtrace
-  end
+      @logger.info("sending email to #{ENV["EMAIL_TO"] ||receipts.email}") unless ENV["DONT_EMAIL"]
+      Childcarepro::DbExport::ReceiptMailer.sendReceipts(receipts.email, facility_folder) unless ENV["DONT_EMAIL"]
+
+      receipts= writers = nil
 end

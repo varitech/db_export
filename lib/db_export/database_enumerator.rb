@@ -9,9 +9,10 @@ module Childcarepro::DbExport
         
         def each_instance
           @instances.each do |name, connection|
-            puts name
-            ActiveRecord::Base.establish_connection(connection)
+            puts connection
+            conn=ActiveRecord::Base.establish_connection(connection)
             yield
+            conn.disconnect!
           end
         end
       end

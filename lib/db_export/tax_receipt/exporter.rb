@@ -26,8 +26,13 @@ module Childcarepro::DbExport
                       .reject  { |receipt| receipt.outstanding_amount==0 && receipt.payments.sum(&:AMOUNT) ==0 && receipt.invoice_charges.detail.map(&:children_charges).flatten.empty?})
         end
         
-        def self.exporters(year,console)
-          Facility.where("status='Active'").map {|f| Exporter.new(year,console, {facility_id: f.id})}
+        def self.each_exporter(year,console)
+          idx =0
+          Facility.where("status='Active'").foreach do |f|
+             exporter = Exporter.new(year,console, { facility_id: f.id })
+             yield exporter, idx++
+             exporter = nil
+          end
         end
         
         private 
